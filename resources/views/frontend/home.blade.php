@@ -7,7 +7,7 @@
     <section class="main-banner">
         <div class="overlay">
             <div class="container">
-                @if ($errors->any())
+                {{-- @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
                             @foreach ($errors->all() as $error)
@@ -15,7 +15,7 @@
                             @endforeach
                         </ul>
                     </div>
-                @endif
+                @endif --}}
                 <div class="content">
                     <div class="row">
                         <div class="@guest col-md-6 col-sm-12 @endguest">
@@ -42,28 +42,42 @@
                                 <form action="{{ url('register?group=student') }}" method="post">
                                     @csrf
                                         <input class="form-control" type="text" name="name" placeholder="Name">
-                                        @error('name')
+                                        <div class="w-100 align-left">
+                                            @error('name')
                                             <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                            @enderror
+                                        </div>
                                     <div class="row">
                                         <div class="col-md-6 col-sm-12">
                                             <input class="form-control" type="email" name="email" placeholder="Email">
                                             @error('email')
-                                                <span class="text-danger">{{ $message }}</span> 
+                                                <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="col-md-6 col-sm-12">
                                             <input class="form-control" type="text" name="phone" placeholder="Phone">
+                                            @error('phone')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
-                                    
+
                                     <select class="form-select" name="course" aria-label="Default select example">
                                         <option selected>Select Course</option>
                                         @foreach ($class as $row)
                                         <option value="{{$row->id}}">{{$row->title}}</option>
                                         @endforeach
                                     </select>
+                                        @error('course')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     <input class="form-control" type="password" name="password" placeholder="Password">
+                                    <div class="w-100 align-left">
+                                        @error('password')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
                                     <button class="btn" type="submit">Register</button>
                                 </form>
                             </div>
@@ -83,7 +97,7 @@
                 <h1>We Offered</h1>
             </div>
 
-            
+
 
             <div class="row g-4">
 
