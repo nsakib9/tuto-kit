@@ -1,0 +1,319 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.header .bar {
+  background: #233785;
+  font-size: 14px;
+  padding: 10px 0;
+}
+
+.header .bar .anchor-list a {
+  color: #ffffff;
+  text-decoration: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0 15px;
+}
+
+.header .bar .anchor-list a:nth-last-child(1) {
+  border: none;
+}
+
+@media screen and (max-width: 768px) {
+  .header .bar .anchor-list {
+    text-align: center;
+  }
+}
+
+.header .bar .contact-list {
+  text-align: right;
+}
+
+.header .bar .contact-list p {
+  color: #ffffff;
+  display: inline-block;
+  margin-bottom: 0;
+  margin-right: 15px;
+}
+
+.header .bar .contact-list p:nth-last-child(1) {
+  margin-right: 0px;
+}
+
+@media screen and (max-width: 480px) {
+  .header .bar .contact-list p {
+    display: block;
+    padding-top: 5px;
+  }
+}
+
+.header .bar .contact-list p a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+  .header .bar .contact-list {
+    text-align: center;
+  }
+}
+
+.header .nav {
+  background: #ffffff;
+  box-shadow: 0 3px 10px #e0e0e0;
+}
+
+.header .nav .navbar {
+  margin: 0;
+  padding: 0;
+}
+
+.header .nav .navbar .navbar-brand img {
+  width: 200px;
+}
+
+.header .nav .navbar .navbar-toggler {
+  background: transparent;
+  border: 1px solid #233785;
+  border-radius: 0px;
+}
+
+.header .nav .navbar .navbar-toggler:focus {
+  box-shadow: 0 0 1px #233785;
+}
+
+.header .nav .navbar .navbar-toggler span {
+  color: #233785;
+}
+
+.header .nav .navbar .navbar-nav .nav-item .nav-link {
+  position: relative;
+  padding: 7px 15px;
+  color: #555555;
+}
+
+@media screen and (min-width: 992px) {
+  .header .nav .navbar .navbar-nav .nav-item .nav-link::before {
+    position: absolute;
+    content: '';
+    left: 30%;
+    bottom: 0;
+    width: 20%;
+    height: 3px;
+    background: transparent;
+    transition: 0.3s ease-in-out;
+  }
+  .header .nav .navbar .navbar-nav .nav-item .nav-link:hover {
+    color: #233785;
+  }
+  .header .nav .navbar .navbar-nav .nav-item .nav-link:hover::before {
+    left: 0%;
+    width: 100%;
+    background: #233785;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .header .nav .navbar .navbar-nav .nav-item .nav-link:hover {
+    background: #233785;
+    color: #ffffff;
+  }
+}
+
+.header .nav .navbar .navbar-nav .nav-item .active {
+  color: #233785;
+}
+
+@media screen and (min-width: 992px) {
+  .header .nav .navbar .navbar-nav .nav-item .active::before {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background: #233785;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .header .nav .navbar .navbar-nav .nav-item .active:hover {
+    background: #233785;
+    color: #ffffff;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .header .nav .navbar .navbar-nav .nav-item:hover .dropdown-menu {
+    display: block;
+  }
+}
+
+.header .nav .navbar .navbar-nav .dropdown .dropdown-menu {
+  border: 1px solid rgba(35, 55, 133, 0.1);
+  border-radius: 0;
+}
+
+.header .nav .navbar .navbar-nav .dropdown .dropdown-menu .dropdown-item:hover {
+  background: #233785;
+  color: #ffffff;
+}
+
+@media screen and (max-width: 992px) {
+  .header .nav .navbar .navbar-nav .dropdown .dropdown-menu {
+    border: none !important;
+    margin-left: 20px;
+  }
+}
+
+.footer .contents {
+  background: rgba(35, 55, 133, 0.9);
+  padding: 70px 0;
+  font-size: 16px;
+  line-height: 25px;
+}
+
+.footer .contents .heading h3 {
+  color: #ffffff;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.footer .contents .description p {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.footer .contents .links a {
+  color: rgba(255, 255, 255, 0.9);
+  display: block;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.footer .contents .links a:hover {
+  text-decoration: underline;
+}
+
+.footer .contents .contact a {
+  color: rgba(255, 255, 255, 0.9);
+  display: block;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.footer .contents .contact a:hover {
+  text-decoration: underline;
+}
+
+.footer .contents .contact p {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.footer .contents .social {
+  margin-top: 20px;
+}
+
+.footer .contents .social a {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.7rem;
+  margin: 0 7px;
+  transition: 0.3s ease-in-out;
+}
+
+.footer .contents .social a:nth-child(1) {
+  margin-left: 0;
+}
+
+.footer .contents .social a:hover {
+  color: #ffffff;
+}
+
+.footer .contents .logo {
+  margin-top: 40px;
+  overflow: hidden;
+}
+
+.footer .contents .logo img {
+  width: 100%;
+}
+
+.footer .copyright {
+  background: #233785;
+  padding: 15px 0;
+  text-align: right;
+}
+
+.footer .copyright p {
+  color: #ffffff;
+  margin: 0;
+}
+
+.footer .copyright p a {
+  color: #ffffff;
+}
+
+.main-banner {
+  background: url("../images/rez-header-bg-1920-1x.jpg") no-repeat #233785;
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+}
+
+.main-banner .overlay {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.main-banner .overlay .content {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 50px;
+}
+
+.main-banner .overlay .content .btn {
+  background: #233785;
+  color: #ffffff;
+  margin-top: 20px;
+  padding: 10px 30px;
+  border-radius: 50px;
+}
+
+.main-banner .overlay .form {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-banner .overlay .form form {
+  width: 100%;
+}
+
+.main-banner .overlay .form form input,
+.main-banner .overlay .form form select {
+  border-radius: 0px;
+  margin: 10px 0;
+  height: 40px;
+  border: 1px solid #233785;
+}
+
+.main-banner .overlay .form form input:focus,
+.main-banner .overlay .form form select:focus {
+  box-shadow: 0 0 7px #233785;
+}
+
+.main-banner .overlay .form form button {
+  background: #233785;
+  color: #ffffff;
+  width: 100%;
+  margin-top: 20px;
+}

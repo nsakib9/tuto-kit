@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+// Screen Size
+$sz-1200: 1200px;
+$sz-1024: 1024px;
+$sz-992: 992px;
+$sz-900: 900px;
+$sz-768: 768px;
+$sz-600: 600px;
+$sz-480: 480px;
+$sz-320: 320px;
+// Background Color 
+$bg-1: #233785;
+$bg-2: #F2F2F2;
+$bg-3: #e0e0e0;
+$bg-4: #ffffff;
+$bg-5: #233785;
+$bg-6: transparent;
+// Text Color 
+$cl-1: #233785;
+$cl-2: #333333;
+$cl-3: #555555;
+$cl-4: #999999;
+$cl-5: #ffffff;
+$cl-6: transparent;
+// Global
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+// Header
+.header {
+    // Top Bar
+    .bar {
+        background: $bg-1;
+        font-size: 14px;
+        padding: 10px 0;
+        .anchor-list {
+            a {
+                color: $cl-5;
+                text-decoration: none;
+                border-right: 1px solid rgba($cl-5, 0.2);
+                padding: 0 15px;
+                &:hover {}
+                &:nth-last-child(1) {
+                    border: none;
+                }
+            }
+            @media screen and (max-width: $sz-768) {
+                text-align: center;
+            }
+        }
+        .contact-list {
+            text-align: right;
+            p {
+                color: $cl-5;
+                display: inline-block;
+                margin-bottom: 0;
+                margin-right: 15px;
+                &:nth-last-child(1) {
+                    margin-right: 0px;
+                }
+                @media screen and (max-width: $sz-480) {
+                    display: block;
+                    padding-top: 5px;
+                }
+                a {
+                    color: $cl-5;
+                    text-decoration: none;
+                    &:hover {}
+                }
+            }
+            @media screen and (max-width: $sz-768) {
+                text-align: center;
+            }
+        }
+    }
+    // Navigation Menu
+    .nav {
+        background: $bg-4;
+        box-shadow: 0 3px 10px $bg-3;
+        .navbar {
+            margin: 0;
+            padding: 0;
+            .navbar-brand {
+                img {
+                    width: 200px;
+                }
+            }
+            .navbar-toggler {
+                background: $bg-6;
+                border: 1px solid $cl-1;
+                border-radius: 0px;
+                &:focus {
+                    box-shadow: 0 0 1px $bg-1;
+                }
+                span {
+                    color: $cl-1;
+                    &:hover {}
+                }
+            }
+            .navbar-nav {
+                .nav-item {
+                    &:hover {}
+                    .nav-link {
+                        position: relative;
+                        padding: 7px 15px;
+                        color: $cl-3;
+                        @media screen and (min-width: $sz-992) {
+                            &::before {
+                                position: absolute;
+                                content: '';
+                                left: 30%;
+                                bottom: 0;
+                                width: 20%;
+                                height: 3px;
+                                background: $bg-6;
+                                transition: 0.3s ease-in-out;
+                            }
+                            &:hover {
+                                color: $cl-1;
+                                &::before {
+                                    left: 0%;
+                                    width: 100%;
+                                    background: $bg-1;
+                                }
+                            }
+                        }
+                        @media screen and (max-width: $sz-992) {
+                            &:hover {
+                                background: $bg-1;
+                                color: $cl-5;
+                            }
+                        }
+                    }
+                    .active {
+                        color: $cl-1;
+                        @media screen and (min-width: $sz-992) {
+                            &::before {
+                                position: absolute;
+                                content: '';
+                                left: 0;
+                                bottom: 0;
+                                width: 100%;
+                                height: 3px;
+                                background: $bg-1;
+                            }
+                        }
+                        @media screen and (max-width: $sz-992) {
+                            &:hover {
+                                background: $bg-1;
+                                color: $cl-5;
+                            }
+                        }
+                    }
+                    @media screen and (min-width: $sz-992) {
+                        &:hover {
+                            .dropdown-menu {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+                .dropdown {
+                    .dropdown-menu {
+                        border: 1px solid rgba($bg-1, 0.1);
+                        border-radius: 0;
+                        .dropdown-item {
+                            &:hover {
+                                background: $bg-1;
+                                color: $cl-5;
+                            }
+                        }
+                        @media screen and (max-width: $sz-992) {
+                            border: none !important;
+                            margin-left: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//Footer
+.footer {
+    .contents {
+        background: rgba($bg-1, 0.9);
+        padding: 70px 0;
+        font-size: 16px;
+        line-height: 25px;
+        .heading {
+            h3 {
+                color: $cl-5;
+                margin-bottom: 5px;
+                text-transform: uppercase;
+                font-size: 1.2rem;
+                font-weight: 600;
+            }
+        }
+        .description {
+            p {
+                color: rgba($cl-5, 0.9);
+                margin: 0;
+            }
+        }
+        .links {
+            a {
+                color: rgba($cl-5, 0.9);
+                display: block;
+                text-decoration: none;
+                margin-bottom: 5px;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+        .contact {
+            a {
+                color: rgba($cl-5, 0.9);
+                display: block;
+                text-decoration: none;
+                margin-bottom: 5px;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+            p {
+                color: rgba($cl-5, 0.9);
+                margin: 0;
+            }
+        }
+        .social {
+            margin-top: 20px;
+            a {
+                color: rgba($cl-5, 0.7);
+                font-size: 1.7rem;
+                margin: 0 7px;
+                transition: 0.3s ease-in-out;
+                &:nth-child(1) {
+                    margin-left: 0;
+                }
+                &:hover {
+                    color: $cl-5;
+                }
+            }
+        }
+        .logo {
+            margin-top: 40px;
+            overflow: hidden;
+            img {
+                width: 100%;
+            }
+        }
+    }
+    .copyright {
+        background: rgba($bg-1, 1);
+        padding: 15px 0;
+        text-align: right;
+        p {
+            color: $cl-5;
+            margin: 0;
+            a {
+                color: $cl-5;
+            }
+        }
+    }
+}
+
+// Main Banner
+.main-banner {
+    background: url('../images/rez-header-bg-1920-1x.jpg') no-repeat $bg-1;
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    .overlay {
+        // background: rgba($bg-4, 0.5);
+        height: 100%;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        .content {
+            height: 100%;
+            background: rgba($bg-4, 0.8);
+            padding: 50px;
+            .btn {
+                background: $bg-1;
+                color: $cl-5;
+                margin-top: 20px;
+                padding: 10px 30px;
+                border-radius: 50px;
+            }
+        }
+        .form {
+            height: 100%;
+            background: rgba($bg-4, 0.8);
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            form {
+                width: 100%;
+                input,
+                select {
+                    border-radius: 0px;
+                    margin: 10px 0;
+                    height: 40px;
+                    border: 1px solid $bg-1;
+                    &:focus {
+                        box-shadow: 0 0 7px $bg-1;
+                    }
+                }
+                button {
+                    background: $bg-1;
+                    color: $cl-5;
+                    width: 100%;
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+}
