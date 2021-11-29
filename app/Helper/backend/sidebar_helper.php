@@ -249,6 +249,16 @@ if(!function_exists("sidebar")){
                         "icon" => "far fa-circle nav-icon"
                     );
                 }
+
+                if(is_admin()){
+                    $Bar[] = array(
+                        "id" => 8,
+                        "status" => 1,
+                        "name" => "Chat Plugin",
+                        "url" => url("/admin/settings?group=chat"),
+                        "icon" => "far fa-circle nav-icon"
+                    );
+                }
 			}
 			/// Setting Sub Category Stop
 

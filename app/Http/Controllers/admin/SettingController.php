@@ -21,15 +21,16 @@ class SettingController extends Controller
                        ($group == 'review'?'review':
                        ($group == 'footer'?'footer':
                        ($group == 'menu'?'menu':
-                       ($group == 'page'?'page':'error'))))))));
-           
+                       ($group == 'chat'?'chat':
+                       ($group == 'page'?'page':'error')))))))));
+
        menuActiveId(8);
-    
+
     }
     public function index(){
         // Check Page is Valid;
-        if($this->group == 'error') 
-        return redirect()->back()->with('error','Page Not found');      
+        if($this->group == 'error')
+        return redirect()->back()->with('error','Page Not found');
 
         if($this->group == 'logo'){
               menuActiveId(8,1);
@@ -87,6 +88,15 @@ class SettingController extends Controller
             return view('backend.admin.setting.menu',compact('menu'));
         }
 
+        if($this->group == 'chat'){
+            menuActiveId(8,7);
+           if(!permission('Setting Manage','Nav Menu Link Read')) return redirect()->back()->with('error','You have no Permission');
+           $menu = Menu::get();
+           $chat_plugin = Option::where('type', 'chat_plugin')->first();
+           $chat_content = $chat_plugin->content;
+           return view('backend.admin.setting.chat_plugin',compact('menu', 'chat_content'));
+       }
+
         return redirect()->back()->with('error','URL invaild');
     }
 
@@ -103,7 +113,7 @@ class SettingController extends Controller
         }
         if($this->group == 'css'){
             if(!permission('Setting Manage','CSS Builder Read')) return redirect()->back()->with('error','You have no Permission');
-            if(request()->input('id')) { 
+            if(request()->input('id')) {
 
                 $css = Option::where('id',request()->input('id'))->first();
                 return response()->json([
@@ -118,7 +128,7 @@ class SettingController extends Controller
         }
         if($this->group == 'menu'){
             if(!permission('Setting Manage','Nav Menu Link Read')) return redirect()->back()->with('error','You have no Permission');
-            if(request()->input('id')) { 
+            if(request()->input('id')) {
 
                 $menu = Menu::findOrFail(request()->input('id'));
                 return response()->json([
@@ -133,7 +143,7 @@ class SettingController extends Controller
         }
         if($this->group == 'review'){
             if(!permission('Setting Manage','Review Read')) return redirect()->back()->with('error','You have no Permission');
-            if(request()->input('id')) { 
+            if(request()->input('id')) {
 
                 $review = Review::findOrFail(request()->input('id'));
                 return response()->json([
@@ -155,7 +165,7 @@ class SettingController extends Controller
         if($this->group == 'logo'){
             if(!permission('Setting Manage','Logo Create')) return redirect()->back()->with('error','You have no Permission');
             $data = $r->all();
-            $img = Option::where('type','logo')->first()->logoimg; 
+            $img = Option::where('type','logo')->first()->logoimg;
             $data['type'] = 'logo';
 
             // IF IMAGE SUBMIT
@@ -187,7 +197,7 @@ class SettingController extends Controller
                 'type' => 'css',
                 'title' => $r->title,
                 'content' => $r->content,
-                'status' => $r->status == 'on' ? 1 : '', 
+                'status' => $r->status == 'on' ? 1 : '',
             ];
             $status = Option::create($data);
             if(! $status) return redirect()->back()->with('error','Custom CSS Create faild :(');
@@ -207,7 +217,7 @@ class SettingController extends Controller
                 'title' => $r->title,
                 'subtitle' => $r->subtitle,
                 'body' => $r->body,
-                'status' => $r->status, 
+                'status' => $r->status,
             ];
 
             if($r->image){
@@ -227,22 +237,22 @@ class SettingController extends Controller
             $r->validate([
                 'title' => 'required',
             ]);
-            
+
              $data = [
                 'title' => $r->title,
                 'url' => $r->url,
-                'dropdown' => $r->dropdown == 'on' ? 1 : 0, 
+                'dropdown' => $r->dropdown == 'on' ? 1 : 0,
                 'is_sub' => 0 ,
-                'status' => $r->status == 'on' ? 1 : 0, 
+                'status' => $r->status == 'on' ? 1 : 0,
             ];
             if(isset($r->main_id)){
                 $data = [
                     'title' => $r->title,
                     'url' => $r->url,
                     'main_id' => $r->main_id,
-                    'dropdown' => 0, 
+                    'dropdown' => 0,
                     'is_sub' => 1 ,
-                    'status' => $r->status == 'on' ? 1 : 0, 
+                    'status' => $r->status == 'on' ? 1 : 0,
                 ];
             }
             $status = Menu::create($data);
@@ -276,17 +286,17 @@ class SettingController extends Controller
             $data = [
                 'title' => $r->title,
                 'url' => $r->url,
-                'dropdown' => $r->dropdown == 'on' ? 1 : 0, 
+                'dropdown' => $r->dropdown == 'on' ? 1 : 0,
                 'is_sub' => 0 ,
-                'status' => $r->status == 'on' ? 1 : 0, 
+                'status' => $r->status == 'on' ? 1 : 0,
             ];
             if(isset($r->sub)){
                 $data = [
                     'title' => $r->title,
                     'url' => $r->url,
-                    'dropdown' => 0, 
+                    'dropdown' => 0,
                     'is_sub' => 1 ,
-                    'status' => $r->status == 'on' ? 1 : 0, 
+                    'status' => $r->status == 'on' ? 1 : 0,
                 ];
             }
             $status = Menu::find($id)->update($data);
@@ -304,7 +314,7 @@ class SettingController extends Controller
                 'title' => $r->title,
                 'subtitle' => $r->subtitle,
                 'body' => $r->body,
-                'status' => $r->status, 
+                'status' => $r->status,
             ];
 
             if($r->image){
@@ -319,9 +329,9 @@ class SettingController extends Controller
                 $data = [
                     'title' => $r->title,
                     'url' => $r->url,
-                    'dropdown' => 0, 
+                    'dropdown' => 0,
                     'is_sub' => 1 ,
-                    'status' => $r->status, 
+                    'status' => $r->status,
                 ];
             }
             $status = Review::find($id)->update($data);
@@ -366,6 +376,24 @@ class SettingController extends Controller
             return redirect()->back()->with('success','Footer Html Code update success');
            }
         }
+
+        if($this->group == 'chat'){
+            if(!permission('Setting Manage','Footer Update')) return redirect()->back()->with('error','You have no Permission');
+            $has = Option::where('type','chat_plugin')->first();
+            if(! $has){
+             Option::create([
+                 'type' => 'chat_plugin',
+                 'content' => $r->content,
+                 'status' => $r->status
+             ]);
+             return redirect()->back()->with('success','Footer Html Code Create success');
+            }else{
+             $has->update([
+                 'content' => $r->content
+             ]);
+             return redirect()->back()->with('success','Footer Html Code update success');
+            }
+         }
     }
 
     public function delete($id,$status=false){
@@ -409,7 +437,7 @@ class SettingController extends Controller
         $title = $r->title;
         $img = json_decode($r->img);
         $body = $r->body;
-      
+
         $data = [
             'type' => 'page',
             'title' => $title,
@@ -431,7 +459,7 @@ class SettingController extends Controller
                 $new_img = rename(public_path($old_dir),public_path('images/page_builder_img/'.$old_img));
                 $body = Str::replace($img[0],base_url.'images/page_builder_img/'.$old_img,$body);
         }
-        
+
       $data = array_merge($data, ['content' => $body,'url' =>  Str::replace(' ','_',$r->title)]);
         $data = Option::create($data);
         return response()->json($data);
@@ -445,7 +473,7 @@ class SettingController extends Controller
         $title = $r->title;
         $img = json_decode($r->img);
         $body = $r->body;
-      
+
         $data = [
             'type' => 'page',
             'title' => $title,
@@ -467,9 +495,9 @@ class SettingController extends Controller
                 $new_img = rename(public_path($old_dir),public_path('images/page_builder_img/'.$old_img));
                 $body = Str::replace($img[0],base_url.'images/page_builder_img/'.$old_img,$body);
         }
-        
+
         $data = array_merge($data, ['content' => $body,'url' =>  Str::replace(' ','_',$r->title)]);
         $data = Option::find($id)->update($data);
         return response()->json($data);
-    } 
+    }
 }

@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    
+
     <!-- Header -->
     @include('frontend.partials.header')
     <!-- /Header -->
@@ -39,6 +39,14 @@
     <script src="{{ asset('assets/js/custom.js')}}"></script>
     <!-- Bootstrap -->
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+
+
+    @php
+         $chatPlugin = App\Models\Option::where('type', 'chat_plugin')->first();
+    @endphp
+
+    {!! $chatPlugin->content !!}
+
 </body>
 
 </html>
