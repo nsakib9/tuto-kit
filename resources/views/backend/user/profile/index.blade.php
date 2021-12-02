@@ -32,7 +32,7 @@
                             </ul>
                         </div>
                     @endif
-                
+
             </div>
             <div class="card">
               <!-- <div class="card-header">
@@ -53,7 +53,7 @@
                 <button style="margin-left : 34vw ;" class="btn btn-primary">Chenge Image</button>
                 </form>
                 <br>
-                
+
                 <form action="{{ route('profile.info') }}" method="post">
                 @csrf
                 <div class="bg-dark p-2">Profile Info</div>
@@ -66,7 +66,7 @@
                 @if(is_student())
                     <div class="group-form">
                         <label for="">Course</label>
-                        <select class="form-control" name="course" id="">
+                        <select class="form-control" name="course" id="" disabled >
                             <option value="">Select Course</option>
                             @foreach($course as $row)
                             <option value="{{$row->id }}" <?php echo $row->id == Auth::user()->course ? 'selected' : '' ; ?>>{{ $row->title }}</option>
@@ -96,6 +96,30 @@
                     </div>
                 @endif
                 </div>
+
+                @if (is_student())
+                <br>
+                <div class="bg-dark p-2">Subjects</div>
+                <ul class="list-group mt-2">
+                    @foreach ($subjects as $subject)
+                        <li class="list-group-item">
+                            <div class="form-check">
+                                <input
+                                class="form-check-input"
+                                type="checkbox"
+                                name="subjects[]"
+                                value="{{ $subject->id }}"
+                                id="flexCheckDefault"
+                                />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    {{ $subject->title }}
+                                </label>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+                @endif
+
                 <br>
                 <div class="bg-dark p-2">Profile Contact</div>
                 <br>
@@ -115,7 +139,7 @@
                     </div>
                 </div>
                 <br>
-            
+
                 <div class="bg-dark p-2">Extra</div>
                 <br>
                     <div class="group-form">
@@ -123,8 +147,8 @@
                         <textarea class="form-control" name="note" id="" cols="" rows="2">{{Auth::user()->note}}</textarea>
                     </div>
                     <br>
-            @endif    
-            <input type="hidden" name="id" value="{{Auth::id()}}">   
+            @endif
+            <input type="hidden" name="id" value="{{Auth::id()}}">
                 <button class="btn btn-success" type="submit">Update Profile</button>
               </div>
             </div>

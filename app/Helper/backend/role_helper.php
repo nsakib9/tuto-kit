@@ -20,7 +20,7 @@ if(!function_exists("role_has")){
 }
 if(!function_exists("is_super")){
     function is_super(){
-        return Auth::user()->super_admin; 
+        return Auth::user()->super_admin;
     }
 }
 if(!function_exists("is_admin")){
@@ -92,30 +92,30 @@ if(!function_exists("permission")){
                [ "status" => 1, "id" => 18, "title" => "Logo Create"],
                [ "status" => 1, "id" => 19, "title" => "Logo Update"],
                [ "status" => 1, "id" => 20, "title" => "Logo Delete"],
-        
+
                [ "status" => 1, "id" => 21, "title" => "Page Builder Read"],
                [ "status" => 1, "id" => 22, "title" => "Page Builder Create"],
                [ "status" => 1, "id" => 23, "title" => "Page Builder Update"],
                [ "status" => 1, "id" => 24, "title" => "Page Builder Delete"],
-        
+
                [ "status" => 1, "id" => 25, "title" => "CSS Builder Read"],
                [ "status" => 1, "id" => 26, "title" => "CSS Builder Create"],
                [ "status" => 1, "id" => 27, "title" => "CSS Builder Update"],
                [ "status" => 1, "id" => 28, "title" => "CSS Builder Delete"],
-        
+
                [ "status" => 1, "id" => 29, "title" => "Footer Read"],
                [ "status" => 1, "id" => 30, "title" => "Footer Create"],
                [ "status" => 1, "id" => 31, "title" => "Footer Update"],
                [ "status" => 1, "id" => 32, "title" => "Footer Delete"],
-        
+
                [ "status" => 1, "id" => 33, "title" => "Popular Lession Read"],
                [ "status" => 1, "id" => 34, "title" => "Popular Lession Update"],
-        
+
                [ "status" => 1, "id" => 35, "title" => "Review Read"],
                [ "status" => 1, "id" => 36, "title" => "Review Create"],
                [ "status" => 1, "id" => 37, "title" => "Review Update"],
                [ "status" => 1, "id" => 38, "title" => "Review Delete"],
-        
+
                [ "status" => 1, "id" => 39, "title" => "Nav Menu Link Read"],
                [ "status" => 1, "id" => 40, "title" => "Nav Menu Link Create"],
                [ "status" => 1, "id" => 41, "title" => "Nav Menu Link Update"],
@@ -132,6 +132,8 @@ if(!function_exists("permission")){
                3 => [ "status" => 1, "id" => 46, "title" => "Contact"],
                4 => [ "status" => 1, "id" => 47, "title" => "Support"],
                5 => [ "status" => 1, "id" => 48, "title" => "Setting"],
+               4 => [ "status" => 1, "id" => 49, "title" => "Messenger Groups"],
+
             ]
         ];
         $array[] = [

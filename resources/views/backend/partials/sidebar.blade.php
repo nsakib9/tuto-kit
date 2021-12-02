@@ -1,7 +1,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="{{ asset('backend/backend/dist/img/AdminLTELogo.png')}}" alt="LSKIT Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{ asset('backend/backend/dist/img/AdminLTELogo.png')}}" alt="LSKIT Logo" class="brand-image" style="opacity: .8">
       <span class="brand-text font-weight-light">LSKIT 3</span>
     </a>
 
@@ -46,7 +46,7 @@
                   @if($bar['list']) <i class="right fas fa-angle-left"></i> @endif
                 </p>
               </a>
-                @if($bar['list']) 
+                @if($bar['list'])
                     <ul class="nav nav-treeview">
                       @foreach (sidebar($bar['name']) as $sub)
                         <li class="nav-item">

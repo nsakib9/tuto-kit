@@ -34,7 +34,7 @@
                 <div class="col">
                     <nav class="navbar navbar-expand-lg">
                         <a class="navbar-brand" href="{{ url('/') }}">
-                        <?php echo logo() ; // App\Helper\frontend\base_url  ?> 
+                        <?php echo logo() ; // App\Helper\frontend\base_url  ?>
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="bi bi-hash"></span>
@@ -63,7 +63,7 @@
                                     </li>
                                     @else
                                     <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ $row->url }}">{{ $row->title }}</a>
+                                        <a class="nav-link {{ Request::is($row->url) ? 'active' : '' }}" aria-current="page" href="{{ $row->url }}">{{ $row->title }}</a>
                                     </li>
                                     @endif
                                 @endforeach

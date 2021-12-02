@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Course;
+use App\Models\Subject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileConroller extends Controller
 {
@@ -12,13 +14,14 @@ class ProfileConroller extends Controller
     }
     public function index(){
         $course = Course::get();
-        return view('backend.user.profile.index',compact('course'));
+        $subjects = Subject::where('course_id', Auth::user()->course)->get();
+        return view('backend.user.profile.index',compact('course', 'subjects'));
     }
     public function profile_image_update(Request $r){
         $r->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        
+
         $img = User::findOrFail($r->id)->img;
         $imageName = time().'-'.rand(1,99999).'.'.$r->image->extension();
         $r->image->move(public_path('images/profile'), $imageName);
@@ -27,7 +30,7 @@ class ProfileConroller extends Controller
             if(file_exists(trim(public_path('images\profile\ ')).$img))
             unlink(trim(public_path('images\profile\ ')).$img);
         }
-        
+
         $status = User::findOrFail($r->id)->update(['img' => $imageName]);
         if ($status)
         return redirect()->back()->with('success','Your Profile Image Updated :)');

@@ -9,9 +9,14 @@ use App\Mail\ContactSend;
 
 class ContactController extends Controller
 {
+    public function __construct(){
+        menuActiveId(6);
+    }
+
     public function index(){
         $mail = Contact::get();
         return view('backend.admin.contact.index',compact('mail'));
+
     }
 
     public function json_page($id){
