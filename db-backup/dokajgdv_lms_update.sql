@@ -63,10 +63,11 @@ CREATE TABLE IF NOT EXISTS `ch_messages` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table lskit_lms.ch_messages: ~116 rows (approximately)
+-- Dumping data for table lskit_lms.ch_messages: ~117 rows (approximately)
 DELETE FROM `ch_messages`;
 /*!40000 ALTER TABLE `ch_messages` DISABLE KEYS */;
 INSERT INTO `ch_messages` (`id`, `type`, `from_id`, `to_id`, `body`, `attachment`, `seen`, `created_at`, `updated_at`) VALUES
+	(1640729686, 'Teacher', 12, 31, 'dasfs', NULL, 0, '2021-12-15 03:47:22', '2021-12-15 03:47:22'),
 	(1646913490, 'groups', 33, 13, 'hello f', NULL, 0, '2021-10-02 07:26:04', '2021-10-02 07:26:04'),
 	(1647330950, 'group', 33, 777773, 'wwwwwww', NULL, 0, '2021-10-13 05:06:55', '2021-10-13 05:06:55'),
 	(1655208715, 'groups', 31, 13, 'www', NULL, 0, '2021-10-03 06:27:39', '2021-10-03 06:27:39'),
@@ -124,6 +125,7 @@ INSERT INTO `ch_messages` (`id`, `type`, `from_id`, `to_id`, `body`, `attachment
 	(2110982057, 'group', 33, 777773, 'fghdfghdfghgfhfghgfhfghfdghdfghdfghfghg', NULL, 0, '2021-10-13 04:53:13', '2021-10-13 04:53:13'),
 	(2114837138, 'user', 12, 31, 'sfghsfghsfhtsfthsfh', NULL, 1, '2021-09-04 04:44:43', '2021-09-04 07:26:06'),
 	(2124922014, 'user', 12, 12, 'df', NULL, 1, '2021-09-04 04:45:55', '2021-09-04 04:45:56'),
+	(2127689700, 'groups', 47, 8888813, ',,,,,,,,,,,,', NULL, 0, '2021-12-01 22:59:53', '2021-12-01 22:59:53'),
 	(2131229175, 'Student', 33, 35, 'pp', NULL, 0, '2021-10-03 05:54:36', '2021-10-03 05:54:36'),
 	(2131948258, 'user', 12, 31, 'sththst', NULL, 1, '2021-09-04 04:44:57', '2021-09-04 07:26:06'),
 	(2132972336, 'Teacher', 35, 31, 'hh', NULL, 1, '2021-09-04 07:30:48', '2021-09-04 07:30:49'),
@@ -196,14 +198,16 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table lskit_lms.contacts: ~2 rows (approximately)
+-- Dumping data for table lskit_lms.contacts: ~4 rows (approximately)
 DELETE FROM `contacts`;
 /*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
 INSERT INTO `contacts` (`id`, `name`, `email`, `massage`, `read_at`, `created_at`, `updated_at`) VALUES
-	(3, 'Todd Buckley', 'cynupuj@mailinator.com', 'Cupidatat quidem et', '2021-11-21', '2021-08-24 07:03:14', '2021-11-21 17:19:57'),
-	(18, 'Luke Pennington', 'puvowok@mailinator.com', 'Omnis id aliqua Vel', '2021-10-24', '2021-08-28 03:45:32', '2021-10-24 16:06:48');
+	(18, 'Luke Pennington', 'puvowok@mailinator.com', 'Omnis id aliqua Vel', '2021-12-15', '2021-08-28 03:45:32', '2021-12-15 03:55:12'),
+	(19, 'Jakeem Long', 'xezizikafu@mailinator.com', 'Irure perferendis vo', '2021-12-01', '2021-12-01 22:12:18', '2021-12-01 23:03:45'),
+	(20, 'Dalton Pollard', 'mupilo@mailinator.com', 'Vitae aliquam amet', '2021-12-01', '2021-12-01 22:17:48', '2021-12-01 23:03:47'),
+	(21, 'Lareina Huff', 'sabedohyt@mailinator.com', 'Voluptatem labore i', '2021-12-01', '2021-12-01 22:18:28', '2021-12-01 23:03:51');
 /*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
 
 -- Dumping structure for table lskit_lms.courses
@@ -217,15 +221,14 @@ CREATE TABLE IF NOT EXISTS `courses` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `status` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table lskit_lms.courses: ~2 rows (approximately)
 DELETE FROM `courses`;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
 INSERT INTO `courses` (`id`, `title`, `description`, `img`, `created_at`, `updated_at`, `status`) VALUES
 	(13, 'MBA', 'MBA ugf aiusfhiuasf iouagdsfoiudfg oiugdsfu dfiuagsdf', '1629695670-91126.jpg', '2021-08-23 05:14:30', '2021-11-21 16:54:05', 1),
-	(14, 'JSC', 'JSC student will get guide from expert', '1629777609-7882.jpg', '2021-08-24 04:00:09', '2021-08-24 06:14:40', 1),
-	(20, 'BA', 'sdafsadfsadfsffsd', '1638160315-26232.jpg', '2021-11-29 04:31:55', '2021-11-29 04:31:55', NULL);
+	(14, 'JSC', 'JSC student will get guide from expert', '1629777609-7882.jpg', '2021-08-24 04:00:09', '2021-08-24 06:14:40', 1);
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 
 -- Dumping structure for table lskit_lms.failed_jobs
@@ -257,11 +260,13 @@ CREATE TABLE IF NOT EXISTS `group_chats` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table lskit_lms.group_chats: ~0 rows (approximately)
+-- Dumping data for table lskit_lms.group_chats: ~1 rows (approximately)
 DELETE FROM `group_chats`;
 /*!40000 ALTER TABLE `group_chats` DISABLE KEYS */;
+INSERT INTO `group_chats` (`id`, `title`, `own`, `member`, `created_at`, `updated_at`) VALUES
+	(1, 'group chat', 1, '5', NULL, NULL);
 /*!40000 ALTER TABLE `group_chats` ENABLE KEYS */;
 
 -- Dumping structure for table lskit_lms.group_messeges
@@ -298,13 +303,13 @@ CREATE TABLE IF NOT EXISTS `menus` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table lskit_lms.menus: ~9 rows (approximately)
 DELETE FROM `menus`;
 /*!40000 ALTER TABLE `menus` DISABLE KEYS */;
 INSERT INTO `menus` (`id`, `title`, `main_id`, `dropdown`, `is_sub`, `status`, `url`, `created_at`, `updated_at`) VALUES
-	(17, 'Home', NULL, 0, 0, 1, NULL, '2021-08-31 05:44:09', '2021-10-24 16:07:36'),
+	(17, 'Home', NULL, 0, 0, 1, '/', '2021-08-31 05:44:09', '2021-12-01 22:01:16'),
 	(23, 'Career', NULL, 0, 0, 1, 'career', '2021-08-31 06:06:49', '2021-10-24 16:07:43'),
 	(24, 'Contact', NULL, 0, 0, 1, 'contact', '2021-08-31 06:07:07', '2021-10-24 16:07:51'),
 	(25, 'Login', NULL, 0, 0, 1, 'login', '2021-08-31 06:07:40', '2021-10-24 16:07:57'),
@@ -331,7 +336,7 @@ CREATE TABLE IF NOT EXISTS `messenger_groups` (
 DELETE FROM `messenger_groups`;
 /*!40000 ALTER TABLE `messenger_groups` DISABLE KEYS */;
 INSERT INTO `messenger_groups` (`id`, `name`, `admin`, `member`, `created_at`, `updated_at`) VALUES
-	(3, 'Groupe', 24, '["31","37","38","39","36","35","40","33"]', '2021-10-11 06:09:50', '2021-10-12 07:09:38'),
+	(3, 'new groupe', 24, '["31","37","38","39","36","35","40","33"]', '2021-10-11 06:09:50', '2021-12-15 03:50:00'),
 	(4, 'Class Hall', 31, '["24","31","33","35","36","37","38","39","40"]', '2021-10-13 05:34:13', '2021-10-13 05:43:33');
 /*!40000 ALTER TABLE `messenger_groups` ENABLE KEYS */;
 
@@ -397,9 +402,9 @@ CREATE TABLE IF NOT EXISTS `options` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table lskit_lms.options: ~14 rows (approximately)
+-- Dumping data for table lskit_lms.options: ~18 rows (approximately)
 DELETE FROM `options`;
 /*!40000 ALTER TABLE `options` DISABLE KEYS */;
 INSERT INTO `options` (`id`, `type`, `title`, `logoimg`, `width`, `height`, `content`, `status`, `url`, `navmenu`, `header`, `footer`, `created_at`, `updated_at`) VALUES
@@ -411,15 +416,16 @@ INSERT INTO `options` (`id`, `type`, `title`, `logoimg`, `width`, `height`, `con
 	(20, 'page', 'Consequatur volupta', NULL, NULL, NULL, '<p>In et soluta sint, q.<img style="width: 1021px;" src="http://127.0.0.1:8000/images/page_builder_img/2021-09-0236169271.png"></p>', '1', 'Consequatur_volupta', NULL, '1', '1', '2021-09-02 04:11:13', '2021-09-02 04:11:56'),
 	(21, 'page', 'newpage', NULL, NULL, NULL, '<h1>Some text<br></h1>', '1', 'newpage', NULL, '1', '1', '2021-09-02 04:50:19', '2021-09-02 05:19:32'),
 	(22, 'footer', NULL, NULL, NULL, NULL, '<div class="col-lg-3 col-md-6 col-sm-12 course">\r\n  <div class="logo">\r\n    <img src="assets/images/default/logo.png" alt="Footer Logo">\r\n  </div>\r\n\r\n  <div class="description">\r\n    <p>This is the first item\'s accordion body. It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes.</p>\r\n  </div>\r\n</div>', '1', NULL, NULL, NULL, NULL, '2021-09-02 06:17:24', '2021-09-02 06:49:14'),
-	(23, 'footer', NULL, NULL, NULL, NULL, '<div class="col-lg-3 col-md-6 col-sm-12 course">\r\n  <div class="heading">\r\n    <h3>Links</h3>\r\n  </div>\r\n  <div class="links">\r\n    <a href="#">This is Link 1</a>\r\n    <a href="#">This is Link 2</a>\r\n    <a href="#">This is Link 3</a>\r\n    <a href="#">This is Link 4</a>\r\n    <a href="#">This is Link 5</a>\r\n  </div>\r\n</div>', '2', NULL, NULL, NULL, NULL, '2021-09-02 06:19:46', '2021-09-07 07:15:17'),
+	(23, 'footer', NULL, NULL, NULL, NULL, '<div class="col-lg-3 col-md-6 col-sm-12 course">\r\n  <div class="heading">\r\n    <h3>Links</h3>\r\n  </div>\r\n  <div class="links">\r\n    <a href="#">This is Link 1</a>\r\n    <a href="#">This is Link 2</a>\r\n    <a href="#">This is Link 3</a>\r\n    <a href="#">This is Link 4</a>\r\n  </div>\r\n</div>', '2', NULL, NULL, NULL, NULL, '2021-09-02 06:19:46', '2021-12-15 04:57:29'),
 	(24, 'footer', NULL, NULL, NULL, NULL, '<div class="col-lg-3 col-md-6 col-sm-12 course">\r\n  <div class="heading">\r\n    <h3>Contact Us</h3>\r\n  </div>\r\n  <div class="contact">\r\n    <a href="tel:+88-012-345-6789"><i class="bi bi-phone"></i> +88-012-345-6789</a>\r\n    <a href="mailto:example@gmail.com"><i class="bi bi-envelope"></i> example@gmail.com</a>\r\n    <p><i class="bi bi-geo-alt"></i> This is the first item\'s accordion body. </p>\r\n  </div>\r\n</div>', '3', NULL, NULL, NULL, NULL, '2021-09-02 06:20:11', '2021-09-02 06:49:38'),
 	(25, 'footer', NULL, NULL, NULL, NULL, '<div class="col-lg-3 col-md-6 col-sm-12 course">\r\n  <div class="heading">\r\n    <h3>Follow Us</h3>\r\n  </div>\r\n  <div class="social">\r\n    <a href="#"><i class="bi bi-google"></i></a>\r\n    <a href="#"><i class="bi bi-facebook"></i></a>\r\n    <a href="#"><i class="bi bi-twitter"></i></a>\r\n    <a href="#"><i class="bi bi-instagram"></i></a>\r\n    <a href="#"><i class="bi bi-youtube"></i></a>\r\n  </div>\r\n  <div class="applications">\r\n    <img src="assets/images/default/icon-app-store.svg" alt="Apple Logo">\r\n    <img src="assets/images/default/icon-play-store.svg" alt="Androied Logo">\r\n  </div>\r\n</div>', '4', NULL, NULL, NULL, NULL, '2021-09-02 06:20:21', '2021-09-02 06:49:53'),
-	(26, 'footer', NULL, NULL, NULL, NULL, '<div class="copyright">\r\n  <div class="container text-center">\r\n    <p>&copy; All right reserved in 2021 | Powerd by <a href="#">LSKIT</a></p>\r\n  </div>\r\n</div>', '5', NULL, NULL, NULL, NULL, '2021-09-02 06:48:21', '2021-11-18 21:25:08'),
-	(27, 'logo', NULL, '1630997320-38317.png', '350px', '80px', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-09-07 06:48:40'),
+	(26, 'footer', NULL, NULL, NULL, NULL, '<div class="copyright">\r\n  <div class="container text-center">\r\n    <p>&copy; All right reserved in 2021 || Powerd by <a href="#">LSKIT</a></p>\r\n  </div>\r\n</div>', '5', NULL, NULL, NULL, NULL, '2021-09-02 06:48:21', '2021-12-15 04:58:49'),
+	(27, 'logo', NULL, '1639543347-51144.jpg', '350px', '80px', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-12-15 04:42:27'),
 	(28, 'lesson', NULL, NULL, NULL, NULL, '<div class="mt-5"></div>\r\n    <div class="title a-h1">\r\n        <h1>Popular Lessons</h1>\r\n    </div>\r\n    <section class="pupular-lesson">\r\n        <div class="container">\r\n            <div class="row">\r\n                <div class="col-md-12">\r\n                    <ul class="lessons">\r\n                        <li class="lesson">Macebth</li>\r\n                        <li class="lesson">Hamlet</li>\r\n                        <li class="lesson">Preface to Shakespeare</li>\r\n                        <li class="lesson">Robinson Crusoe</li>\r\n                        <li class="lesson">Pilgrims Progress</li>\r\n                        <li class="lesson">A Doll\'s House</li>\r\n                        <li class="lesson">Pygmalion</li>\r\n                        <li class="lesson">Heart Of Darkness</li>\r\n                        <li class="lesson">Metamorphosis</li>\r\n                        <li class="lesson">The Dumb Waiter</li>\r\n                        <li class="lesson">Arms and the men</li>\r\n                        <li class="lesson">Riders to the sea</li>\r\n                    </ul>\r\n                </div>\r\n            </div>\r\n        </div>\r\n</section>', '1', NULL, NULL, NULL, NULL, '2021-09-08 06:15:41', '2021-09-08 06:33:20'),
 	(29, 'chat_plugin', NULL, NULL, NULL, NULL, '<!-- Messenger Chat Plugin Code -->\r\n    <div id="fb-root"></div>\r\n\r\n    <!-- Your Chat Plugin code -->\r\n    <div id="fb-customer-chat" class="fb-customerchat">\r\n    </div>\r\n\r\n    <script>\r\n      var chatbox = document.getElementById(\'fb-customer-chat\');\r\n      chatbox.setAttribute("page_id", "883696575301602");\r\n      chatbox.setAttribute("attribution", "biz_inbox");\r\n\r\n      window.fbAsyncInit = function() {\r\n        FB.init({\r\n          xfbml            : true,\r\n          version          : \'v12.0\'\r\n        });\r\n      };\r\n\r\n      (function(d, s, id) {\r\n        var js, fjs = d.getElementsByTagName(s)[0];\r\n        if (d.getElementById(id)) return;\r\n        js = d.createElement(s); js.id = id;\r\n        js.src = \'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js\';\r\n        fjs.parentNode.insertBefore(js, fjs);\r\n      }(document, \'script\', \'facebook-jssdk\'));\r\n    </script>', NULL, NULL, NULL, NULL, NULL, NULL, '2021-11-29 06:08:28'),
 	(30, 'chat_plugin', NULL, NULL, NULL, NULL, 'hellosa', '1', NULL, NULL, NULL, NULL, '2021-11-29 06:00:19', '2021-11-29 06:00:56'),
-	(31, 'chat_plugin', NULL, NULL, NULL, NULL, 'hellop', '1', NULL, NULL, NULL, NULL, '2021-11-29 06:00:29', '2021-11-29 06:00:29');
+	(31, 'chat_plugin', NULL, NULL, NULL, NULL, 'hellop', '1', NULL, NULL, NULL, NULL, '2021-11-29 06:00:29', '2021-11-29 06:00:29'),
+	(32, 'fevicon', NULL, '1639543321-95443.jpg', '30px', '30px', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-12-15 04:42:01');
 /*!40000 ALTER TABLE `options` ENABLE KEYS */;
 
 -- Dumping structure for table lskit_lms.password_resets
@@ -448,7 +454,7 @@ CREATE TABLE IF NOT EXISTS `reviews` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table lskit_lms.reviews: ~3 rows (approximately)
 DELETE FROM `reviews`;
@@ -474,8 +480,8 @@ CREATE TABLE IF NOT EXISTS `roles` (
 DELETE FROM `roles`;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
 INSERT INTO `roles` (`id`, `name`, `permission`, `created_at`, `updated_at`) VALUES
-	(2, 'Admin', '["1","2","3","4","6","7","8"]', '2021-08-18 04:47:09', '2021-08-26 05:31:38'),
-	(5, 'Student', '["9","13","43","44","47","48"]', '2021-08-18 05:36:53', '2021-10-24 16:12:39'),
+	(2, 'Admin', '["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","49","48","49","50","51","52","53"]', '2021-08-18 04:47:09', '2021-12-15 03:47:01'),
+	(5, 'Student', '["9","13"]', '2021-08-18 05:36:53', '2021-12-02 01:04:58'),
 	(7, 'Teacher', '["1","5","9","12","17","21","25","29","33","35","39","43","44","45","46","47","48","49","53"]', '2021-08-21 04:10:55', '2021-10-13 05:35:38'),
 	(10, 'Administator', '["1","2","3","4","5","6","7","8","9","10","11","12","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","47"]', '2021-09-13 05:59:17', '2021-09-13 06:02:24');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
@@ -531,14 +537,17 @@ CREATE TABLE IF NOT EXISTS `subjects` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `status` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table lskit_lms.subjects: ~2 rows (approximately)
+-- Dumping data for table lskit_lms.subjects: ~4 rows (approximately)
 DELETE FROM `subjects`;
 /*!40000 ALTER TABLE `subjects` DISABLE KEYS */;
 INSERT INTO `subjects` (`id`, `course_id`, `title`, `description`, `img`, `created_at`, `updated_at`, `status`) VALUES
 	(23, 14, 'Bangla 1ST Part', 'Bangla subject is important for all.', NULL, '2021-08-24 04:00:51', '2021-08-24 06:10:22', 1),
-	(25, 14, 'Math', 'qojetery@mailinator.com', '1629785509-91122.jpg', '2021-08-24 06:11:50', '2021-08-24 06:14:58', 1);
+	(25, 14, 'Math', 'qojetery@mailinator.com', '1629785509-91122.jpg', '2021-08-24 06:11:50', '2021-08-24 06:14:58', 1),
+	(26, 13, 'Enaglish', NULL, '1638399218-63248.jpg', '2021-12-01 22:53:38', '2021-12-02 00:32:24', 1),
+	(27, 13, 'Ict', NULL, '1638405129-50154.jpg', '2021-12-02 00:32:09', '2021-12-02 00:32:29', 1),
+	(28, 13, 'English', NULL, '1638405162-74775.jpg', '2021-12-02 00:32:42', '2021-12-02 00:32:49', 1);
 /*!40000 ALTER TABLE `subjects` ENABLE KEYS */;
 
 -- Dumping structure for table lskit_lms.users
@@ -569,13 +578,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   `active_status` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table lskit_lms.users: ~18 rows (approximately)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `parentPhone`, `course`, `img`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `expertIn`, `eq`, `cv`, `Address`, `note`, `super_admin`, `role_name`, `avatar`, `messenger_color`, `dark_mode`, `active_status`) VALUES
-	(12, 'Israfil Hossain', 'admin@admin.com', '12345678954', NULL, '2', '1631167471-76398.jpg', NULL, '$2a$12$PiVVkFu3Poro3ms.NLx.4.3.PiZCKtnetTjUdzh4KRefvxFkeSBeK', '5wpJWGvQ3eUnOKyROjME5zdM7K8ehTNUK5Lj3w0etHLarEbGckZtO02Pnrv3', '2021-08-21 07:28:08', '2021-11-11 22:36:56', '', NULL, NULL, NULL, NULL, 1, 'Admin', '93b48689-02db-4eb4-bec5-7d6ca86fd03e.jpg', '#3F51B5', 0, 0),
+	(12, 'Israfil Hossain', 'admin@admin.com', '12345678954', NULL, '2', '1631167471-76398.jpg', NULL, '$2a$12$PiVVkFu3Poro3ms.NLx.4.3.PiZCKtnetTjUdzh4KRefvxFkeSBeK', '57H9D3FMTUgWgaWDlPXWXrIQm5T2mnRdsj634UiLIwGsr71Cp8dOROnWJ0ST', '2021-08-21 07:28:08', '2021-12-15 03:47:50', '', NULL, NULL, NULL, NULL, 1, 'Admin', '93b48689-02db-4eb4-bec5-7d6ca86fd03e.jpg', '#FF9800', 0, 0),
 	(23, 'Quinn Hurley', 'kugizati@mailinator.com', '0123654879', NULL, '14', NULL, NULL, '$2y$10$kTW8ybwjLHVQqiLSNHaRgOJPvxk11iK8Wd2713m9qokgMq2UZqMFe', NULL, '2021-08-24 04:23:44', '2021-11-29 04:31:16', '', NULL, NULL, NULL, NULL, 0, 'Student', 'avatar.png', '#2180f3', 0, 0),
 	(24, 'Jeremy Neal', 't2@t.t', '01236547898', NULL, '', NULL, NULL, '$2y$10$aO.9SsK8QRrSGDz6h8uRDOQF1WMyHhJgK6l8Ejbf5k79UODqkufva', NULL, '2021-08-24 04:24:31', '2021-10-03 05:52:31', '["13","14"]', 'BBA', '1629779070-57849.jpg', 'Cumque dicta eu cons', 'Ea facere qui iure v', 0, 'Teacher', 'avatar.png', '#2180f3', 0, 0),
 	(31, 'Mahbub', 't@t.t', '01236547895', NULL, '', '1630989825-29852.jpg', NULL, '$2y$10$aO.9SsK8QRrSGDz6h8uRDOQF1WMyHhJgK6l8Ejbf5k79UODqkufva', NULL, '2021-08-24 05:07:20', '2021-10-03 06:31:43', '["13","14"]', 'MBA', '1629781639-4588.jpg', 'shiromoni', 'sdfhgsdf sdfhgsdf sdfhg', 0, 'Teacher', 'avatar.png', '#2180f3', 0, 1),
@@ -593,7 +602,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `phone`, `parentPhone`, `course`, `i
 	(44, 'Arthur Vang', 'wicem@mailinator.com', '13774736276', NULL, '14', NULL, NULL, '$2y$10$IUA2QGDkUI5K.Vit95wFQuewNYG7054tJevGNeXbkuTvQ65.a/3WS', NULL, '2021-11-13 15:47:01', '2021-11-13 15:47:01', NULL, NULL, NULL, NULL, NULL, 0, 'Student', 'avatar.png', '#2180f3', 0, 0),
 	(45, 'Rylee Frederick', 'zyxe@mailinator.com', '15054812838', NULL, '13', NULL, NULL, '$2y$10$ab.je9S9qhwhzYCWINEFNOH8rHSNT39o2OIhK/l226aahyGYPHX9.', NULL, '2021-11-13 16:18:19', '2021-11-13 16:18:19', NULL, NULL, NULL, NULL, NULL, 0, 'Student', 'avatar.png', '#2180f3', 0, 0),
 	(46, 'Khalilur Rahman', 'pollob@lskit.com', '916701578', NULL, '13', NULL, NULL, '$2y$10$Cbv/ZwG1zpFyMvkUHTQrvuueIcEMq7Mfux9JyPzmeGX97bv0ooZH2', NULL, '2021-11-15 18:19:05', '2021-11-15 18:19:05', NULL, NULL, NULL, NULL, NULL, 0, 'Student', 'avatar.png', '#2180f3', 0, 0),
-	(47, 'shakil', 'std@gmail.com', '01969290200', NULL, '13', NULL, NULL, '$2y$10$p9xAlhcFIHmz1yVMIU3kQevVWZlCESVjWCEyswE58VES6uI94sTwC', NULL, '2021-11-29 04:23:54', '2021-11-29 04:23:54', NULL, NULL, NULL, NULL, NULL, 0, 'Student', 'avatar.png', '#2180f3', 0, 0);
+	(47, 'shakil', 'std@gmail.com', '01969290200', NULL, '13', NULL, NULL, '$2y$10$p9xAlhcFIHmz1yVMIU3kQevVWZlCESVjWCEyswE58VES6uI94sTwC', 'aIESErbfjmchF7s3sQ3nL1NZ9Pj7eg5MEOCLo7USv0m2gvmHwFtGXgur9Heq', '2021-11-29 04:23:54', '2021-11-29 04:23:54', NULL, NULL, NULL, NULL, NULL, 0, 'Student', 'avatar.png', '#2180f3', 0, 0),
+	(48, 'Janna Howell', 'stu@gmail.com', '0185848245', NULL, '13', NULL, NULL, '$2y$10$WafNaIx8xBbdrcT6upNRIeJ1zEchfBd7845yfIAvvhYLLdlAZmy/y', NULL, '2021-12-01 22:46:35', '2021-12-01 22:46:35', NULL, NULL, NULL, NULL, NULL, 0, 'Student', 'avatar.png', '#2180f3', 0, 0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
