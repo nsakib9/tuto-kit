@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Logo Setup</h1>
+            <h1 class="m-0">Logo and Fevicon Setup</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -51,6 +51,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
+                            <h4>logo</h4>
                             <table>
                                 <tbody>
                                     <tr>
@@ -73,6 +74,7 @@
                               </table>
                         </div>
                         <div class="col-md-6">
+                            <h4>fevicon</h4>
                             <table>
                                 <tbody>
                                     <tr>

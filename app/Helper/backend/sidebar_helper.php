@@ -28,7 +28,7 @@ if(!function_exists("sidebar")){
 				$Bar[] = array(
                     "id" => 3,
                     "status" => 1,
-					"name" => "Class",
+					"name" => "Course",
 					"icon" => "nav-icon fas fa-book",
 					"url" => route("class"),
                     "list" => 0
