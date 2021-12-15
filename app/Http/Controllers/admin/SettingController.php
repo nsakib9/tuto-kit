@@ -15,6 +15,7 @@ class SettingController extends Controller
     public function __construct(){
         $group = request()->input('group');
         $this->group = ($group == 'logo'?'logo':
+                       ($group == 'fevicon'?'fevicon':
                        ($group == 'page'?'page':
                        ($group == 'css'?'css':
                        ($group == 'lesson'?'lesson':
@@ -22,7 +23,7 @@ class SettingController extends Controller
                        ($group == 'footer'?'footer':
                        ($group == 'menu'?'menu':
                        ($group == 'chat'?'chat':
-                       ($group == 'page'?'page':'error')))))))));
+                       ($group == 'page'?'page':'error'))))))))));
 
        menuActiveId(8);
 
@@ -36,7 +37,8 @@ class SettingController extends Controller
               menuActiveId(8,1);
             if(!permission('Setting Manage','Logo Read')) return redirect()->back()->with('error','You have no Permission');
             $logo = Option::where('type','logo')->first();
-            return view('backend.admin.setting.logo',compact('logo'));
+            $fevicon = Option::where('type','fevicon')->first();
+            return view('backend.admin.setting.logo',compact('logo', 'fevicon'));
         }
 
         if($this->group == 'css'){
@@ -109,6 +111,13 @@ class SettingController extends Controller
             $logo = Option::where('type','logo')->first();
             return response()->json([
                 "html" => view('backend.admin.setting.modals.logo',compact('logo'))->render()
+            ]);
+        }
+        if($this->group == 'fevicon'){
+            if(!permission('Setting Manage','Logo Read')) return redirect()->back()->with('error','You have no Permission');
+            $logo = Option::where('type','fevicon')->first();
+            return response()->json([
+                "html" => view('backend.admin.setting.modals.fevicon',compact('logo'))->render()
             ]);
         }
         if($this->group == 'css'){
@@ -185,6 +194,30 @@ class SettingController extends Controller
             if(! $status) return redirect()->back()->with('error','Logo upload faild :(');
             return redirect()->back()->with('success','Logo upload Success :)');
 
+        }
+
+        if($this->group == 'fevicon'){
+            if(!permission('Setting Manage','Logo Create')) return redirect()->back()->with('error','You have no Permission');
+            $data = $r->all();
+            $img = Option::where('type','fevicon')->first()->logoimg;
+            $data['type'] = 'fevicon';
+
+            // IF IMAGE SUBMIT
+            if(isset($r->image)){
+                $imageName = time().'-'.rand(1,99999).'.'.$r->image->extension();
+                $r->image->move(public_path('images/logo'), $imageName);
+                if(!is_null($img)){
+                    if(file_exists(trim(public_path('images\logo\ ')).$img))
+                    unlink(trim(public_path('images\logo\ ')).$img);
+                }
+                $data['logoimg'] = $imageName;
+            }
+            unset($data['_token']);
+            unset($data['group']);
+            unset($data['image']);
+            $status = Option::where('type','fevicon')->update($data);
+            if(! $status) return redirect()->back()->with('error','Logo upload faild :(');
+            return redirect()->back()->with('success','Logo upload Success :)');
         }
 
         if($this->group == 'css'){

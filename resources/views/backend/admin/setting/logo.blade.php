@@ -24,7 +24,7 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-         
+
             @if (Session::has('error'))
             <div class="alert alert-danger">
                     <ul>
@@ -48,27 +48,54 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                    <table>
-                      <tbody>
-                          <tr>
-                              <td>
-                                  <img src="{{asset('images/logo/'.$logo->logoimg)}}" height="{{$logo->height}}" width="{{$logo->width}}">
-                              </td>
-                          </tr>
-                          <tr>
-                              <td>
-                              <p>height : {{$logo->height}}</p>
-                              <p>width : {{$logo->width}}</p>
-                              </td>
-                          </tr>
-                          <tr>
-                              <td>
-                              <button id="create" class="btn btn-primary">Change</button>
-                              </td>
-                          </tr>
-                      </tbody>
-                    </table>
-                 
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="{{asset('images/logo/'.$logo->logoimg)}}" height="{{$logo->height}}" width="{{$logo->width}}">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        <p>height : {{$logo->height}}</p>
+                                        <p>width : {{$logo->width}}</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        <button id="create" class="btn btn-primary">Change</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                              </table>
+                        </div>
+                        <div class="col-md-6">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="{{asset('images/logo/'.$fevicon->logoimg)}}" height="{{$logo->height}}" width="{{$logo->width}}">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        <p>height : {{$fevicon->height}}</p>
+                                        <p>width : {{$fevicon->width}}</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        <button id="create-fev" class="btn btn-primary">Change</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                              </table>
+                        </div>
+                    </div>
+
               </div>
             </div>
     </div>
@@ -78,13 +105,27 @@
 <div id="modale_area"></div>
 </form>
 
+<form action="{{ url('/admin/settings?group=fevicon') }}" method="post" enctype="multipart/form-data">
+    @csrf
+<div id="modale_area_fevicon"></div>
+</form>
+
 @endsection
 @section('js')
-  <script>      
+  <script>
         $('button[id="create"]').click(function(){
             $.get(base_url+'admin/settings_modal?group=logo',function(data){
                 console.log(data);
                 $('#modale_area').html(data.html);
+                $('#logoSet').modal('show');
+            });
+        });
+  </script>
+    <script>
+        $('button[id="create-fev"]').click(function(){
+            $.get(base_url+'admin/settings_modal?group=fevicon',function(data){
+                console.log(data);
+                $('#modale_area_fevicon').html(data.html);
                 $('#logoSet').modal('show');
             });
         });

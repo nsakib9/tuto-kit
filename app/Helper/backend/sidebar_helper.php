@@ -4,16 +4,16 @@ if(!function_exists("sidebar")){
 	function sidebar($sub = ""){
 		$Bar = array();
 		if($sub == ""){
-			if(is_admin()){
-				$Bar[] = array(
-                    "id" => 1,
-                    "status" => 1,
-					"name" => "Category",
-					"icon" => "nav-icon fas fa-th",
-					"url" => route("category"),
-                    "list" => 0
- 				);
-			}
+			// if(is_admin()){
+			// 	$Bar[] = array(
+            //         "id" => 1,
+            //         "status" => 1,
+			// 		"name" => "Category",
+			// 		"icon" => "nav-icon fas fa-th",
+			// 		"url" => route("category"),
+            //         "list" => 0
+ 			// 	);
+			// }
             if(true){
 				$Bar[] = array(
                     "id" => 2,
@@ -64,16 +64,16 @@ if(!function_exists("sidebar")){
                     "list" => 0
  				);
 			}
-			if(permission("Side Bar", "Support")){
-				$Bar[] = array(
-                    "id" => 7,
-                    "status" => 1,
-					"name" => "Support",
-					"icon" => "nav-icon fas fa-comments",
-					"url" => '#',
-                    "list" => 1
- 				);
-			}
+			// if(permission("Side Bar", "Support")){
+			// 	$Bar[] = array(
+            //         "id" => 7,
+            //         "status" => 1,
+			// 		"name" => "Support",
+			// 		"icon" => "nav-icon fas fa-comments",
+			// 		"url" => '#',
+            //         "list" => 1
+ 			// 	);
+			// }
             if(permission("Side Bar", "Setting")){
 				$Bar[] = array(
                     "id" => 8,
