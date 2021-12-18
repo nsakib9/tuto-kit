@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '74f508844f259837dc813b39d4c87f00ec61b244',
+    'reference' => '789b502a84c350e6d484b48771a93d52dbfa7bbd',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -464,6 +464,33 @@ private static $installed = array (
         0 => 'v8.76.2',
       ),
     ),
+    'intervention/image' => 
+    array (
+      'pretty_version' => '2.7.1',
+      'version' => '2.7.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '744ebba495319501b873a4e48787759c72e3fb8c',
+    ),
+    'intervention/imagecache' => 
+    array (
+      'pretty_version' => '2.5.1',
+      'version' => '2.5.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e714f13298ecaf9b2d11cb7106a0415d5615cbe5',
+    ),
+    'joypixels/emoji-toolkit' => 
+    array (
+      'pretty_version' => '6.6.0',
+      'version' => '6.6.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '99f960c37eef1bdd0a3e30a676f8839c88e48ce3',
+    ),
     'kodova/hamcrest-php' => 
     array (
       'replaced' => 
@@ -496,7 +523,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '74f508844f259837dc813b39d4c87f00ec61b244',
+      'reference' => '789b502a84c350e6d484b48771a93d52dbfa7bbd',
     ),
     'laravel/sail' => 
     array (
@@ -661,6 +688,24 @@ private static $installed = array (
       array (
       ),
       'reference' => 'f34c2b11eb9d2c9318e13540a1dbc2a3afbd939c',
+    ),
+    'paragonie/random_compat' => 
+    array (
+      'pretty_version' => 'v9.99.100',
+      'version' => '9.99.100.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '996434e5492cb4c3edcb9168db6fbb1359ef965a',
+    ),
+    'paragonie/sodium_compat' => 
+    array (
+      'pretty_version' => 'v1.17.0',
+      'version' => '1.17.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'c59cac21abbcc0df06a3dd18076450ea4797b321',
     ),
     'phar-io/manifest' => 
     array (
@@ -881,8 +926,8 @@ private static $installed = array (
     array (
       'provided' => 
       array (
-        0 => '1.0|2.0',
-        1 => '1.0.0 || 2.0.0 || 3.0.0',
+        0 => '1.0.0 || 2.0.0 || 3.0.0',
+        1 => '1.0|2.0',
       ),
     ),
     'psr/simple-cache' => 
@@ -909,6 +954,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'a0d9981aa07ecfcbea28e4bfa868031cca121e7d',
+    ),
+    'pusher/pusher-php-server' => 
+    array (
+      'pretty_version' => '7.0.2',
+      'version' => '7.0.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'af3eeaefc0c7959f5b3852f0a4dd5547245d33df',
     ),
     'ralouphie/getallheaders' => 
     array (
@@ -943,6 +997,24 @@ private static $installed = array (
       array (
         0 => '4.2.3',
       ),
+    ),
+    'rtippin/messenger' => 
+    array (
+      'pretty_version' => 'v1.16.1',
+      'version' => '1.16.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'fc4c63b66ae7bfb842f40926a8de217b9458319e',
+    ),
+    'rtippin/messenger-ui' => 
+    array (
+      'pretty_version' => 'v2.4.0',
+      'version' => '2.4.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '7c5751d21bfb9add41e70b2237104ed2372670aa',
     ),
     'sebastian/cli-parser' => 
     array (

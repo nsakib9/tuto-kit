@@ -6,10 +6,14 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use RTippin\Messenger\Contracts\MessengerProvider;
+use RTippin\Messenger\Traits\Messageable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MessengerProvider
 {
     use HasFactory, Notifiable;
+    use Messageable; //Default trait to satisfy MessengerProvider interface
+
 
     /**
      * The attributes that are mass assignable.
@@ -51,9 +55,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    
+
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+
+    public static function getProviderSettings(): array
+    {
+        return [
+            'alias' => 'user',
+            'searchable' => true,
+            'friendable' => true,
+            'devices' => true,
+            'default_avatar' => public_path('vendor/messenger/images/users.png'),
+            'cant_message_first' => [],
+            'cant_search' => [],
+            'cant_friend' => [],
+        ];
     }
 }
