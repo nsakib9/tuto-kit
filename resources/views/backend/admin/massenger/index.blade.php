@@ -55,14 +55,15 @@
                         <th>S/N</th>
                         <th>Name</th>
                         <th>Admin</th>
-                        <th>Member</th>
+                        {{-- <th>Member</th> --}}
                         <th>Add/Remove</th>
                         <th>Action</th>
                       </tr>
                   </thead>
                   <tbody>
+
                @foreach($groups as $group)
-                    @php
+                    {{-- @php
                       $do = false;
                       $count = 1 ;
                       $member = $group->member == null || $group->member == '' ?
@@ -77,18 +78,22 @@
                       if(is_super()) $do = false;
 
                     @endphp
-                    @continue($do)
+                    @continue($do) --}}
                     <tr>
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{ $group->name }}</td>
-                      <td>{{ getName($group->admin) }}</td>
-                      <td>{{ $count }}</td>
+                      <td>{{ $group->id }}</td>
+                      @php
+                         $thread = \DB::table('participants')->where('thread_id', $group->id)->first();
+                         $ownerName = @\DB::table('users')->where('id', $thread->owner_id)->first();
+                      @endphp
+                      <td>{{ @$ownerName->name }}</td>
+                      {{-- <td>{{ $count }}</td> --}}
                       <td>
                         <button id="manege" data-id="{{ $group->id }}" class="btn btn-primary">Menege</button>
                       </td>
                       <td><img src="{{ asset('edit.png') }}" onclick="edit({{ $group->id }})" alt="" width="30px" height="30px"> <img src="{{ asset('delete.webp') }}" onclick="delete_group({{ $group->id }})" alt="" width="30px" height="30px"></td></td>
                     </tr>
-                @endforeach 
+                @endforeach
                   </tbody>
                 </table>
               </div>
@@ -110,7 +115,7 @@
 @endsection
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
-  <script>   
+  <script>
         $('button[id="manege"]').click(function(){
             $.get(base_url+'groupmanegemodal?manege=true&data='+$(this).data('id'),function(data){
                 //console.log(data);

@@ -6,24 +6,33 @@ use App\Models\MessengerGroup;
 use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
+use DB;
+use Illuminate\Support\Str;
+use RTippin\Messenger\Models\Thread;
+use RTippin\Messenger\Models\Participant;
+
 
 class MassengerGroupsController extends Controller
 {
     public function index(){
           if(!permission('Magenger Group','Read')) return redirect()->back()->with('error','You have no Permission');
-        $groups = is_super() ? MessengerGroup::get()
-                             : MessengerGroup::where('admin',auth()->id())->get();
+        // $groups = is_super() ? MessengerGroup::get()
+        //                      : MessengerGroup::where('admin',auth()->id())->get();
+
+        $groups = is_super() ? Thread::get()
+                             : Thread::where('admin',auth()->id())->get();
+
         return view('backend.admin.massenger.index',compact('groups'));
     }
     public function modal(){
         $user = User::where('role_name','Teacher')->get();
+        
         if(request()->input('id')){
            if(!permission('Magenger Group','Create')) return 0;
 
-            $group = MessengerGroup::find(request()->input('id'));
+            $group = Thread::find(request()->input('id'));
             return response()->json([
                 "html" => view('backend.admin.massenger.modals.add',compact('user','group'))->render()
-    
             ]);
         }
 
@@ -37,7 +46,7 @@ class MassengerGroupsController extends Controller
             $class = Course::get();
             return response()->json([
                 "html" => view('backend.admin.massenger.modals.menege',compact('class','id'))->render()
-    
+
             ]);
         }
 
@@ -55,10 +64,27 @@ class MassengerGroupsController extends Controller
             "name" => "required",
             "admin" => "required",
         ]);
-        if(MessengerGroup::create([
-            'name' => $r->name,    
-            'admin' => $r->admin,    
-        ]))
+
+
+        $createGroup = Thread::create([
+            'id' => Str::uuid()->toString(),
+            'type' => 2,
+            'subject' => $r->name,
+        ]);
+
+        $assignAdminToGroup = Participant::create([
+            'id' => Str::uuid()->toString(),
+            'thread_id' => $createGroup->id,
+            'owner_type' => 'App\Models\User',
+            'owner_id' => $r->admin,
+            'admin' => 1
+        ]);
+
+
+        // if(MessengerGroup::create([
+        //     'name' => $r->name,
+        //     'admin' => $r->admin,
+        // ]))
         return redirect()->back()->with('success','Massenger Group Create Successfully');
         return redirect()->back()->with('error','Massenger Group Create faild');
     }
