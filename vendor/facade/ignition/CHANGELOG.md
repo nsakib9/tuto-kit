@@ -2,6 +2,64 @@
 
 All notable changes to `ignition` will be documented in this file
 
+## 2.17.2 - 2021-11-29
+
+- scroll overflow on solutions
+
+## 2.17.1 - 2021-11-25
+
+- streamline Livewire solutions
+
+## 2.17.0 - 2021-11-24
+
+- improve recording of Livewire data
+
+## 2.16.1 - 2021-11-16
+
+- allow sending of unbinded sql queries to Flare
+
+## 2.16.0 - 2021-10-28
+
+- improve recording data from jobs (#416)
+
+## 2.15.0 - 2021-10-11
+
+- improve output of flare:test
+
+## 2.14.1 - 2021-10-08
+
+- update base URL for Flare
+
+## 2.14.0 - 2021-10-01
+
+- add support for VScode WSL + SSH remote (#420)
+
+## 2.13.1 - 2021-09-13
+
+- fix namespace of `SentReports` in facade
+
+## 2.13.0 - 2021-09-13
+
+- add tracking uuid (#418)
+
+## 2.12.1 - 2021-09-08
+
+- add support for VS Codium editor (#417)
+
+## 2.12.0 - 2021-08-24
+
+- add support for collecting information about jobs (#412)
+
+## 2.11.4 - 2021-08-16
+
+- use npm ci instead of install (#411)
+
+## 2.11.3 - 2021-08-16
+
+- fix issues with circular dependencies in model route parameters (#408)
+- remove notice about dirty git state in context
+- wrap `AddGitInformation` middleware in try-catch
+
 ## 2.11.2 - 2021-07-20
 
 - fix issues introduced in 2.11.1 (#403)

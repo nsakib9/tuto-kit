@@ -4,7 +4,6 @@ namespace Illuminate\Http\Concerns;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use SplFileInfo;
 use stdClass;
 use Symfony\Component\VarDumper\VarDumper;
@@ -55,8 +54,12 @@ trait InteractsWithInput
     {
         $header = $this->header('Authorization', '');
 
-        if (Str::startsWith($header, 'Bearer ')) {
-            return Str::substr($header, 7);
+        $position = strrpos($header, 'Bearer ');
+
+        if ($position !== false) {
+            $header = substr($header, $position + 7);
+
+            return strpos($header, ',') !== false ? strstr(',', $header, true) : $header;
         }
     }
 
@@ -294,6 +297,17 @@ trait InteractsWithInput
     }
 
     /**
+     * Retrieve input from the request as a collection.
+     *
+     * @param  array|string|null  $key
+     * @return \Illuminate\Support\Collection
+     */
+    public function collect($key = null)
+    {
+        return collect(is_array($key) ? $this->only($key) : $this->input($key));
+    }
+
+    /**
      * Get a subset containing the provided keys with values from the input data.
      *
      * @param  array|mixed  $keys
@@ -477,14 +491,12 @@ trait InteractsWithInput
     /**
      * Dump the request items and end the script.
      *
-     * @param  array|mixed  $keys
+     * @param  mixed  $keys
      * @return void
      */
     public function dd(...$keys)
     {
-        $keys = is_array($keys) ? $keys : func_get_args();
-
-        call_user_func_array([$this, 'dump'], $keys);
+        $this->dump(...$keys);
 
         exit(1);
     }
@@ -492,7 +504,7 @@ trait InteractsWithInput
     /**
      * Dump the items.
      *
-     * @param  array  $keys
+     * @param  mixed  $keys
      * @return $this
      */
     public function dump($keys = [])
