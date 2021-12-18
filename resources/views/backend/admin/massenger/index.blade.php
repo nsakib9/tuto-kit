@@ -91,7 +91,7 @@
                       <td>
                         <button id="manege" data-id="{{ $group->id }}" class="btn btn-primary">Menege</button>
                       </td>
-                      <td><img src="{{ asset('edit.png') }}" onclick="edit({{ $group->id }})" alt="" width="30px" height="30px"> <img src="{{ asset('delete.webp') }}" onclick="delete_group({{ $group->id }})" alt="" width="30px" height="30px"></td></td>
+                      <td><img src="{{ asset('edit.png') }}" onclick="edit('{{ $group->id }}')" alt="" width="30px" height="30px"> <img src="{{ asset('delete.webp') }}" onclick="delete_group({{ $group->id }})" alt="" width="30px" height="30px"></td></td>
                     </tr>
                 @endforeach
                   </tbody>

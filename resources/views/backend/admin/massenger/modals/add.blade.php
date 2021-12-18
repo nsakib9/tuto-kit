@@ -15,7 +15,7 @@
                 <div id="form_body">
                 <div class="form-group">
                     <label for="studentformfield">Name</label>
-                    <input type="text" class="form-control" name="name" id="studentformfield" placeholder="Enter Full Name" value="<?php echo isset($group) ? $group->name :'' ; ?>">
+                    <input type="text" class="form-control" name="name" id="studentformfield" placeholder="Enter Full Name" value="<?php echo isset($group) ? $group->subject :'' ; ?>">
                 </div>
 
               @if(is_super())

@@ -26,7 +26,7 @@ class MassengerGroupsController extends Controller
     }
     public function modal(){
         $user = User::where('role_name','Teacher')->get();
-        
+
         if(request()->input('id')){
            if(!permission('Magenger Group','Create')) return 0;
 
@@ -35,7 +35,6 @@ class MassengerGroupsController extends Controller
                 "html" => view('backend.admin.massenger.modals.add',compact('user','group'))->render()
             ]);
         }
-
 
 
         if(request()->input('manege')){
@@ -89,9 +88,25 @@ class MassengerGroupsController extends Controller
         return redirect()->back()->with('error','Massenger Group Create faild');
     }
     public function update(Request $r){
+        // return $r;
          if(!permission('Magenger Group','Update')) return redirect()->back()->with('error','You have no Permission');
+
+        $r->validate([
+            "name" => "required",
+            "admin" => "required",
+        ]);
+
         $id = $r->id ;
-        if(MessengerGroup::find($id)->update($r->except('_token')))
+
+        $createGroup = Thread::find($id);
+        $createGroup->subject = $r->name;
+        $createGroup->save();
+
+        $assignAdminToGroup = Participant::where('thread_id', $createGroup->id)->first();
+        $assignAdminToGroup->owner_id = $r->admin;
+        $assignAdminToGroup->save();
+
+        // if(MessengerGroup::find($id)->update($r->except('_token')))
             return redirect()->back()->with('success', 'Massenger Group Change Success');
         return redirect()->back()->with('error', 'Massenger Group Change Faild');
     }
