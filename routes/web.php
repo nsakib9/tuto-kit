@@ -48,6 +48,7 @@ Route::middleware('auth')->group(function(){
      Route::post('/groupmakerrestore',[MassengerGroupsController::class,'update']);//Group Re Store To Modal
      Route::post('/groupmakerdelete/{id}',[MassengerGroupsController::class,'delete']);//Group Delete From Modal
 
+     Route::get('/getuserformembers-check/{group}/{id}',[MassengerGroupsController::class,'memberCheck']);//Member Find
      Route::post('/getuserformembers',[MassengerGroupsController::class,'getMembers']);//Member Find
      Route::post('/membersmanege/{group}/{id}',[MassengerGroupsController::class,'member']);//Member Add/remove
 

@@ -129,27 +129,50 @@ class MassengerGroupsController extends Controller
         $user = User::where('course',$data)->get();
         $members = MessengerGroup::find(session()->get('MessengerGroupName'));
         $members = $members ? json_decode($members->member ? $members->member : "[]") : [] ;
+        $group = str_replace("'", '', request()->input('group'));
+        $groupArr = Participant::select('owner_id')->where('thread_id', $group)->get();
 
-        return response()->json(['user' => $user , 'members' => $members]);
+        return response()->json(['user' => $user , 'members' => $members, 'group' => $groupArr]);
     }
+    public function memberCheck($group, $id){
+        $grouped = str_replace("'", '', $group);
+
+        return $check = Participant::where('thread_id', $grouped)->where('owner_id', $id)->first();
+   }
 
     public function member($group,$id){
+        // return $group.' '. $id;
         if(!permission('Magenger Group',"Add/Remove")) return 0;
-       $group = MessengerGroup::find($group);
-       if(!$group->member){
-            $group->update([ 'member' => json_encode([$id]) ]);
-            return response()->json([ 'status' => 'added' ]);
-       }
-       $members = json_decode($group->member);
-         if(in_array($id,$members)){
-            $index = array_search($id,$members);
-                     array_splice($members,$index,1);
-                     $group->update([ 'member' => json_encode($members) ]);
-            return response()->json([ 'status' => 'removed' ]);
-         }
-        array_push($members,$id);
-        $group->update([ 'member' => json_encode($members) ]);
-        return response()->json([ 'status' => 'added' ]);
+
+        if(!Participant::where('thread_id', $group)->where('owner_id', $id)->first()){
+            $addMemeber = Participant::create([
+                'id' => Str::uuid()->toString(),
+                'thread_id' => $group,
+                'owner_type' => 'App\Models\User',
+                'owner_id' => $id,
+            ]);
+            return response($addMemeber);
+        }else{
+            return 'duplicate value';
+        }
+
+
+
+    //    $group = MessengerGroup::find($group);
+    //    if(!$group->member){
+    //         $group->update([ 'member' => json_encode([$id]) ]);
+    //         return response()->json([ 'status' => 'added' ]);
+    //    }
+    //    $members = json_decode($group->member);
+    //      if(in_array($id,$members)){
+    //         $index = array_search($id,$members);
+    //                  array_splice($members,$index,1);
+    //                  $group->update([ 'member' => json_encode($members) ]);
+    //         return response()->json([ 'status' => 'removed' ]);
+    //      }
+    //     array_push($members,$id);
+    //     $group->update([ 'member' => json_encode($members) ]);
+    //     return response()->json([ 'status' => 'added' ]);
 
     }
 }

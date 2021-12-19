@@ -89,7 +89,7 @@
                       <td>{{ @$ownerName->name }}</td>
                       {{-- <td>{{ $count }}</td> --}}
                       <td>
-                        <button id="manege" data-id="{{ $group->id }}" class="btn btn-primary">Menege</button>
+                        <button id="manege" data-id="'{{ $group->id }}'" class="btn btn-primary">Menege</button>
                       </td>
                       <td><img src="{{ asset('edit.png') }}" onclick="edit('{{ $group->id }}')" alt="" width="30px" height="30px"> <img src="{{ asset('delete.webp') }}" onclick="delete_group({{ $group->id }})" alt="" width="30px" height="30px"></td></td>
                     </tr>
@@ -155,11 +155,12 @@
           });
         }
         function getUser(val){
-          $.post(base_url+'getuserformembers?data='+val.value,{"_token":"{{ csrf_token() }}"},function(data){
-            console.log(data.members);
+          $.post(base_url+'getuserformembers?data='+val.value+'&group='+val.dataset.group,{"_token":"{{ csrf_token() }}"},function(data){
+            console.log(data);
              var html = '' ;
              data.user.forEach(function(user){
-                  var select = data.members.includes(String(user.id)) ? 'checked' : '' ;
+                 console.log(data);
+                  var select = data.group.find((data) => data.owner_id == user.id) ? 'checked' : '' ;
                   html += `<label for="studentformfield">${user.name}</label>
                           <input type="checkbox" onchange="memberManege(${val.dataset.group},${user.id})" id="member" data-id="${user.id}" ${select} class="form-control">`;
              });
