@@ -87,6 +87,8 @@ class MassengerGroupsController extends Controller
         return redirect()->back()->with('success','Massenger Group Create Successfully');
         return redirect()->back()->with('error','Massenger Group Create faild');
     }
+
+
     public function update(Request $r){
         // return $r;
          if(!permission('Magenger Group','Update')) return redirect()->back()->with('error','You have no Permission');
@@ -113,7 +115,7 @@ class MassengerGroupsController extends Controller
 
     public function delete($id){
          if(!permission('Magenger Group','Delete')) return 0;
-        if(MessengerGroup::destroy($id))
+        if(Thread::destroy($id))
             return 1;
         return 0;
     }
@@ -174,5 +176,13 @@ class MassengerGroupsController extends Controller
     //     $group->update([ 'member' => json_encode($members) ]);
     //     return response()->json([ 'status' => 'added' ]);
 
+    }
+
+    public function removeMember($group,$id)
+    {
+        if(!permission('Magenger Group',"Add/Remove")) return 0;
+
+       $deleteMember = Participant::where('thread_id', $group)->where('owner_id', $id)->first()->delete();
+       return response($deleteMember);
     }
 }

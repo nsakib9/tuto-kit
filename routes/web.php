@@ -50,7 +50,8 @@ Route::middleware('auth')->group(function(){
 
      Route::get('/getuserformembers-check/{group}/{id}',[MassengerGroupsController::class,'memberCheck']);//Member Find
      Route::post('/getuserformembers',[MassengerGroupsController::class,'getMembers']);//Member Find
-     Route::post('/membersmanege/{group}/{id}',[MassengerGroupsController::class,'member']);//Member Add/remove
+     Route::post('/membersmanege/{group}/{id}',[MassengerGroupsController::class,'member']);//Member remove
+     Route::delete('/membersmanege/{group}/{id}',[MassengerGroupsController::class,'removeMember']);//Member remove
 
 
     //  As API for Group Messege

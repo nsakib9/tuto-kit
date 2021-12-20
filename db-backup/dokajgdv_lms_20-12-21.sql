@@ -12,12 +12,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-
--- Dumping database structure for lskit_lms
-DROP DATABASE IF EXISTS `lskit_lms`;
-CREATE DATABASE IF NOT EXISTS `lskit_lms` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `lskit_lms`;
-
 -- Dumping structure for table lskit_lms.bots
 DROP TABLE IF EXISTS `bots`;
 CREATE TABLE IF NOT EXISTS `bots` (
@@ -175,7 +169,7 @@ CREATE TABLE IF NOT EXISTS `ch_messages` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table lskit_lms.ch_messages: ~118 rows (approximately)
+-- Dumping data for table lskit_lms.ch_messages: ~116 rows (approximately)
 DELETE FROM `ch_messages`;
 /*!40000 ALTER TABLE `ch_messages` DISABLE KEYS */;
 INSERT INTO `ch_messages` (`id`, `type`, `from_id`, `to_id`, `body`, `attachment`, `seen`, `created_at`, `updated_at`) VALUES
@@ -377,7 +371,7 @@ CREATE TABLE IF NOT EXISTS `friends` (
   KEY `friends_party_type_party_id_index` (`party_type`,`party_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table lskit_lms.friends: ~1 rows (approximately)
+-- Dumping data for table lskit_lms.friends: ~0 rows (approximately)
 DELETE FROM `friends`;
 /*!40000 ALTER TABLE `friends` DISABLE KEYS */;
 INSERT INTO `friends` (`id`, `owner_type`, `owner_id`, `party_type`, `party_id`, `created_at`, `updated_at`) VALUES
@@ -396,7 +390,7 @@ CREATE TABLE IF NOT EXISTS `group_chats` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table lskit_lms.group_chats: ~1 rows (approximately)
+-- Dumping data for table lskit_lms.group_chats: ~0 rows (approximately)
 DELETE FROM `group_chats`;
 /*!40000 ALTER TABLE `group_chats` DISABLE KEYS */;
 INSERT INTO `group_chats` (`id`, `title`, `own`, `member`, `created_at`, `updated_at`) VALUES
@@ -480,7 +474,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   CONSTRAINT `messages_thread_id_foreign` FOREIGN KEY (`thread_id`) REFERENCES `threads` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table lskit_lms.messages: ~1 rows (approximately)
+-- Dumping data for table lskit_lms.messages: ~0 rows (approximately)
 DELETE FROM `messages`;
 /*!40000 ALTER TABLE `messages` DISABLE KEYS */;
 INSERT INTO `messages` (`id`, `thread_id`, `owner_type`, `owner_id`, `type`, `body`, `reply_to_id`, `edited`, `reacted`, `embeds`, `extra`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -649,7 +643,7 @@ CREATE TABLE IF NOT EXISTS `options` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table lskit_lms.options: ~18 rows (approximately)
+-- Dumping data for table lskit_lms.options: ~17 rows (approximately)
 DELETE FROM `options`;
 /*!40000 ALTER TABLE `options` DISABLE KEYS */;
 INSERT INTO `options` (`id`, `type`, `title`, `logoimg`, `width`, `height`, `content`, `status`, `url`, `navmenu`, `header`, `footer`, `created_at`, `updated_at`) VALUES
@@ -845,7 +839,7 @@ CREATE TABLE IF NOT EXISTS `subjects` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table lskit_lms.subjects: ~5 rows (approximately)
+-- Dumping data for table lskit_lms.subjects: ~4 rows (approximately)
 DELETE FROM `subjects`;
 /*!40000 ALTER TABLE `subjects` DISABLE KEYS */;
 INSERT INTO `subjects` (`id`, `course_id`, `title`, `description`, `img`, `created_at`, `updated_at`, `status`) VALUES
@@ -944,13 +938,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table lskit_lms.users: ~20 rows (approximately)
+-- Dumping data for table lskit_lms.users: ~18 rows (approximately)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `parentPhone`, `course`, `img`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `expertIn`, `eq`, `cv`, `Address`, `note`, `super_admin`, `role_name`, `avatar`, `messenger_color`, `dark_mode`, `active_status`) VALUES
-	(12, 'Israfil Hossain', 'admin@admin.com', '12345678954', NULL, '2', '1631167471-76398.jpg', NULL, '$2a$12$PiVVkFu3Poro3ms.NLx.4.3.PiZCKtnetTjUdzh4KRefvxFkeSBeK', 'tNqhDgz25VRUjLyJJPpcbImRgjl7Qk3s4T93a7ErRCBOAHlCtriefbFBXg55', '2021-08-21 07:28:08', '2021-12-19 12:17:05', '', NULL, NULL, NULL, NULL, 1, 'Admin', '93b48689-02db-4eb4-bec5-7d6ca86fd03e.jpg', '#FF9800', 0, 0),
+	(12, 'Israfil Hossain', 'admin@admin.com', '12345678954', NULL, '2', '1631167471-76398.jpg', NULL, '$2a$12$PiVVkFu3Poro3ms.NLx.4.3.PiZCKtnetTjUdzh4KRefvxFkeSBeK', 'tNqhDgz25VRUjLyJJPpcbImRgjl7Qk3s4T93a7ErRCBOAHlCtriefbFBXg55', '2021-08-21 07:28:08', '2021-12-19 12:21:05', '', NULL, NULL, NULL, NULL, 1, 'Admin', '93b48689-02db-4eb4-bec5-7d6ca86fd03e.jpg', '#FF9800', 0, 0),
 	(23, 'Quinn Hurley', 'kugizati@mailinator.com', '0123654879', NULL, '14', NULL, NULL, '$2y$10$kTW8ybwjLHVQqiLSNHaRgOJPvxk11iK8Wd2713m9qokgMq2UZqMFe', NULL, '2021-08-24 04:23:44', '2021-11-29 04:31:16', '', NULL, NULL, NULL, NULL, 0, 'Student', 'avatar.png', '#2180f3', 0, 0),
-	(24, 'Jeremy Neal', 't2@t.t', '01236547898', NULL, '', NULL, NULL, '$2a$12$PiVVkFu3Poro3ms.NLx.4.3.PiZCKtnetTjUdzh4KRefvxFkeSBeK', NULL, '2021-08-24 04:24:31', '2021-12-19 12:18:13', '["13","14"]', 'BBA', '1629779070-57849.jpg', 'Cumque dicta eu cons', 'Ea facere qui iure v', 0, 'Teacher', 'avatar.png', '#2180f3', 0, 0),
+	(24, 'Jeremy Neal', 't2@t.t', '01236547898', NULL, '', NULL, NULL, '$2a$12$PiVVkFu3Poro3ms.NLx.4.3.PiZCKtnetTjUdzh4KRefvxFkeSBeK', NULL, '2021-08-24 04:24:31', '2021-12-19 12:19:30', '["13","14"]', 'BBA', '1629779070-57849.jpg', 'Cumque dicta eu cons', 'Ea facere qui iure v', 0, 'Teacher', 'avatar.png', '#2180f3', 0, 0),
 	(31, 'Mahbub', 't@t.t', '01236547895', NULL, '', '1630989825-29852.jpg', NULL, '$2y$10$aO.9SsK8QRrSGDz6h8uRDOQF1WMyHhJgK6l8Ejbf5k79UODqkufva', NULL, '2021-08-24 05:07:20', '2021-10-03 06:31:43', '["13","14"]', 'MBA', '1629781639-4588.jpg', 'shiromoni', 'sdfhgsdf sdfhgsdf sdfhg', 0, 'Teacher', 'avatar.png', '#2180f3', 0, 1),
 	(33, 'Sofiq ali', 's@s.s', '012365478987', '01236544777', '13', '1630988972-23854.jpg', NULL, '$2y$10$jGZpfSSCu/CKZICASIZey.tD2txnLK4Yligzf9u0nNCsNw812uGVq', NULL, '2021-08-24 05:08:18', '2021-10-13 05:06:24', NULL, NULL, NULL, NULL, NULL, 0, 'Student', 'avatar.png', '#4CAF50', 0, 1),
 	(34, 'Admin', 'a@a.a', '1234567899', NULL, '', NULL, NULL, '$2y$10$L3qtQAPi4KsSlIxuuoEBsesH941OPn8tkjjSrNGGrZrV.QqInPA0W', NULL, '2021-08-24 05:15:32', '2021-09-07 05:08:28', '', NULL, NULL, NULL, NULL, 0, 'Admin', 'avatar.png', '#2180f3', 0, 0),

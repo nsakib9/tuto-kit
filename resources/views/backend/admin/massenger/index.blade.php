@@ -63,6 +63,7 @@
                   <tbody>
 
                @foreach($groups as $group)
+
                     {{-- @php
                       $do = false;
                       $count = 1 ;
@@ -81,7 +82,7 @@
                     @continue($do) --}}
                     <tr>
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{ $group->id }}</td>
+                      <td>{{ $group->subject }}</td>
                       @php
                          $thread = \DB::table('participants')->where('thread_id', $group->id)->first();
                          $ownerName = @\DB::table('users')->where('id', $thread->owner_id)->first();
@@ -91,7 +92,7 @@
                       <td>
                         <button id="manege" data-id="'{{ $group->id }}'" class="btn btn-primary">Menege</button>
                       </td>
-                      <td><img src="{{ asset('edit.png') }}" onclick="edit('{{ $group->id }}')" alt="" width="30px" height="30px"> <img src="{{ asset('delete.webp') }}" onclick="delete_group({{ $group->id }})" alt="" width="30px" height="30px"></td></td>
+                      <td><img src="{{ asset('edit.png') }}" onclick="edit('{{ $group->id }}')" alt="" width="30px" height="30px"> <img src="{{ asset('delete.webp') }}" onclick="delete_group('{{ $group->id }}')" alt="" width="30px" height="30px"></td></td>
                     </tr>
                 @endforeach
                   </tbody>
@@ -162,16 +163,35 @@
                  console.log(data);
                   var select = data.group.find((data) => data.owner_id == user.id) ? 'checked' : '' ;
                   html += `<label for="studentformfield">${user.name}</label>
-                          <input type="checkbox" onchange="memberManege(${val.dataset.group},${user.id})" id="member" data-id="${user.id}" ${select} class="form-control">`;
+                          <input type="checkbox" onchange="memberManege(${val.dataset.group},${user.id}, this)" id="member" data-id="${user.id}" ${select} class="form-control">`;
              });
              $('div[id="bodyForMembers"]').html('');
              $('div[id="bodyForMembers"]').append(html);
           });
         }
-        function memberManege(g,i){
-           $.post(base_url+'membersmanege/'+g+'/'+i,{"_token":"{{ csrf_token() }}"},function(data){
-              console.log(data);
-           });
+        function memberManege(g,i, e){
+            if($(e).is(":checked")){
+                $.post(base_url+'membersmanege/'+g+'/'+i,{"_token":"{{ csrf_token() }}"},function(data){
+                    console.log(data);
+                });
+            }
+            else if($(e).is(":not(:checked)")){
+                console.log('delete')
+                // $.post(base_url+'membersmanege/'+g+'/'+i,{"_token":"{{ csrf_token() }}"},function(data){
+                //     console.log(data);
+                // });
+                $.ajax({
+                    url: base_url+'membersmanege/'+g+'/'+i,
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                    },
+                    type: 'DELETE',
+                    success: function(response) {
+                        console.log(response)
+                    }
+                });
+            }
+
         }
         // Datatable
         $(function () {
