@@ -19,8 +19,9 @@ class MassengerGroupsController extends Controller
         // $groups = is_super() ? MessengerGroup::get()
         //                      : MessengerGroup::where('admin',auth()->id())->get();
 
-        $groups = is_super() ? Thread::get()
-                             : Thread::where('admin',auth()->id())->get();
+        // $groups = is_super() ? Thread::get()
+        //                      : Thread::where('admin',auth()->id())->get();
+            $groups = Thread::get();
 
         return view('backend.admin.massenger.index',compact('groups'));
     }
